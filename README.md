@@ -1,7 +1,3 @@
 # SHIMMY
 Nichole Su
-Jeffery Chen
-
-
-fghbcfgyhbgyujhdshdshdh
-sdftyujnbvfrtyujnbvcfyjnb
+jefefry owes Nichole dunkin 
