@@ -1,3 +1,3 @@
 # SHIMMY
 Nichole Su
-jefefry owes Nichole dunkin 
+jeffery owes Nichole dunkin 
