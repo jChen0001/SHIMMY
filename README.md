@@ -1,1 +1,2 @@
 # SHIMMY
+Jeffery Chen
