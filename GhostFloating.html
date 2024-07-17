@@ -32,7 +32,19 @@
         let ghost = document.getElementById("redGhost");
         let x = 260; //You'll want the x-coordinate of the mouse to be a global variable
         let y = 260; //You'll want the y-coordinate of the mouse to be a global variable
+        let canvas=document.getElementById("canvas");
 
+        canvas.addEventListener("mousemove", ghostCoordinates, false);
+
+        function ghostCoordinates(event){
+            x = event.clientX;
+            y = event.clientY;
+            movingGhost(x,y);
+            console.log(x, y)
+        }
+        function movingGhost(mouseX, mouseY){
+
+        }
         /** You'll want to create a mousemove event listener that publishes the current
         mouse coordinate values to these global x and y variables */
 
