@@ -38,29 +38,15 @@
         function mouseCoordinate(event) {
             x = event.clientX ;
             y = event.clientY ;
-            setInterval(x, y);
-            //console.log(x, y); // Uncomment this line to log the mouse coordinates to the console.
+            movingGhost(x, y);
         } 
 
-        let canvas=document.getElementById("canvas");
-
-        canvas.addEventListener("mousemove", ghostCoordinates, false);
-
-        function ghostCoordinates(event){
-            x = event.clientX;
-            y = event.clientY;
-            movingGhost(x,y);
-            console.log(x, y)
-        }
-        function movingGhost(mouseX, mouseY){
-
-        }
         /** You'll want to create a mousemove event listener that publishes the current
         mouse coordinate values to these global x and y variables */
 
         /** You'll want to create a set interval callback that moves the ghost
         towards these mouse coordinates **/
-        function setInterval(mouseX, mouseY){
+        function movingGhost(x, y){
             let dx = x - parseFloat(ghost.getAttribute("x"));
             let dy = y - parseFloat(ghost.getAttribute("y"));
             let distance = Math.sqrt(dx * dx + dy * dy);
