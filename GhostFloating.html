@@ -32,13 +32,35 @@
         let ghost = document.getElementById("redGhost");
         let x = 260; //You'll want the x-coordinate of the mouse to be a global variable
         let y = 260; //You'll want the y-coordinate of the mouse to be a global variable
+        let canvas=document.getElementById("canvas");
+
+        canvas.addEventListener("mousemove", mouseCoordinate, false);
+        function mouseCoordinate(event) {
+            x = event.clientX ;
+            y = event.clientY ;
+            setInterval(x, y);
+            //console.log(x, y); // Uncomment this line to log the mouse coordinates to the console.
+        } 
 
         /** You'll want to create a mousemove event listener that publishes the current
         mouse coordinate values to these global x and y variables */
 
         /** You'll want to create a set interval callback that moves the ghost
         towards these mouse coordinates **/
+        function setInterval(mouseX, mouseY){
+            let dx = x - parseFloat(ghost.getAttribute("x"));
+            let dy = y - parseFloat(ghost.getAttribute("y"));
+            let distance = Math.sqrt(dx * dx + dy * dy);
+            let stepSize = 10; // You'll want to adjust this value based on your needs
 
+            if (distance > stepSize) {
+                ghost.setAttribute("x", parseFloat(ghost.getAttribute("x")) + dx / distance * stepSize);
+                ghost.setAttribute("y", parseFloat(ghost.getAttribute("y")) + dy / distance * stepSize);
+            } else {
+                ghost.setAttribute("x", x);
+                ghost.setAttribute("y", y);
+            }
+        }; // You'll want to adjust this value based on your needs
         /* In the callback function, you should be able to get the current "x" attribute
         of the ghost by using ghost.getAttribute("x"), and you should be able to set the 
         "x" attribute of the ghost to a value using ghost.setAttribute("x", value). The 
