@@ -1,4 +1,6 @@
 # SHIMMY
 Nichole Su
-Jeffery Chen
+
+Jeffery and Nichole
 Orlando Yang
+
