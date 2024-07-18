@@ -30,15 +30,16 @@
     </svg>
     <script>
         let ghost = document.getElementById("redGhost");
-        let x; //You'll want the x-coordinate of the mouse to be a global variable
-        let y ; //You'll want the y-coordinate of the mouse to be a global variable
+        let x = 200; //You'll want the x-coordinate of the mouse to be a global variable
+        let y = 200 ; //You'll want the y-coordinate of the mouse to be a global variable
         let canvas=document.getElementById("canvas");
+        let ds=1;
 
         canvas.addEventListener("mousemove", mouseCoordinate, false);
         function mouseCoordinate(event) {
-            x = event.clientX ;
-            y = event.clientY ;
-            movingGhost(x, y);
+            x = event.offsetX ;
+            y = event.offsetY ;
+            setInterval(movingGhost, 50);
         } 
 
         /** You'll want to create a mousemove event listener that publishes the current
@@ -46,28 +47,27 @@
 
         /** You'll want to create a set interval callback that moves the ghost
         towards these mouse coordinates **/
-        function movingGhost(x, y){
-            let x1 = Number(ghost.getAttribute("x"))+60;
-            let y1= Number(ghost.getAttribute("y"))+100;
-            let cordX= x1-x;
-            let cordY = y1 - y;
-            let distance = Math.sqrt( cordX*cordX + cordY*cordY );
+        function movingGhost(){
+            let x1 = Number(ghost.getAttribute("x"));
+            let y1= Number(ghost.getAttribute("y"));
+            let dx = 0;
+            let dy = 0;
 
-            if(x != x1) {
-                let m = (y - y1) / (x - x1);
-                dx = Math.sign(x - x1) * distance / Math.sqrt(1 + m * m);
-                dy = m * dx;
-                ghost.setAttribute("x", parseFloat(ghost.getAttribute("x")) + dx / distance * 5);
-                ghost.setAttribute("y", parseFloat(ghost.getAttribute("y")) + dy / distance * 5);
+            if(x != x1) { 
+            let m = (y - y1) / (x - x1);
+            dx = Math.sign(x - x1) * ds / Math.sqrt(1 + m * m);
+            dy = m * dx;
+            } else {
+            dy = Math.sign(y - y1) * ds;
+            }
 
-                } else {
-                    dy = Math.sign(y - y1) * distance;
-                    ghost.setAttribute("x", x);
-                    ghost.setAttribute("y", y);
+            x1+dx;
+            y1+dy;
+            ghost.setAttribute("x", x1 + dx);
+            ghost.setAttribute("y", y1 + dy);
 
-        }
     }
-    
+   
 
         // }; // You'll want to adjust this value based on your needs
         /* In the callback function, you should be able to get the current "x" attribute
